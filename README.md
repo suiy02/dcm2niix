@@ -2,7 +2,8 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/xdkqua54f90x4049/branch/master?svg=true)](https://ci.appveyor.com/project/chrisfilo/dcm2niix)
 
 ## About
-Y. SUI's fork
+Y. SUI's fork.
+
 dcm2niix is a designed to convert neuroimaging data from the DICOM format to the NIfTI format. For details and compiled versions visit the [NITRC wiki](http://www.nitrc.org/plugins/mwiki/index.php/dcm2nii:MainPage).
 
 ## License
