@@ -2567,6 +2567,7 @@ struct TDICOMdata readDICOMv(char * fname, int isVerbose, int compressFlag, stru
 #define  kStudyDate 0x0008+(0x0020 << 16 )
 #define  kAcquisitionDate 0x0008+(0x0022 << 16 )
 #define  kStudyTime 0x0008+(0x0030 << 16 )
+#define  kStudyID   (0x0020+(0x0010 << 16))
 #define  kAcquisitionTime 0x0008+(0x0032 << 16 )
 #define  kManufacturer 0x0008+(0x0070 << 16 )
 #define  kSeriesDescription 0x0008+(0x103E << 16 ) // '0008' '103E' 'LO' 'SeriesDescription'
@@ -2860,6 +2861,9 @@ struct TDICOMdata readDICOMv(char * fname, int isVerbose, int compressFlag, stru
             case 	kStudyTime :
                 dcmStr (lLength, &buffer[lPos], d.studyTime);
                 break;
+	    case 	kStudyID :/*SUI*/
+                dcmStr (lLength, &buffer[lPos], d.studyID);
+		break;
             case 	kPatientName :
                 dcmStr (lLength, &buffer[lPos], d.patientName);
                 break;

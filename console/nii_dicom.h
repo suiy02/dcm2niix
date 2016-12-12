@@ -61,6 +61,7 @@ static const int kCompress50 = 3; //obsolete JPEG lossy
         char phaseEncodingRC;
         char  imageType[kDICOMStr], manufacturersModelName[kDICOMStr], patientID[kDICOMStr], patientOrient[kDICOMStr], patientName[kDICOMStr],seriesDescription[kDICOMStr], sequenceName[kDICOMStr], protocolName[kDICOMStr],scanningSequence[kDICOMStr], birthDate[kDICOMStr], gender[kDICOMStr], age[kDICOMStr],  studyDate[kDICOMStr],studyTime[kDICOMStr], imageComments[kDICOMStr];
         struct TCSAdata CSA;
+        char studyID[kDICOMStr];/*SUI*/
     };
 
     size_t nii_ImgBytes(struct nifti_1_header hdr);

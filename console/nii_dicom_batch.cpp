@@ -736,6 +736,8 @@ int nii_createFilename(struct TDICOMdata dcm, char * niiFilename, struct TDCMopt
                 strcat (outname,opts.indirParent);
             if (f == 'I')
                 strcat (outname,dcm.patientID);
+	    if (f == 'X')
+                strcat (outname,dcm.studyID);
             if (f == 'M') {
                 if (dcm.manufacturer == kMANUFACTURER_GE)
                     strcat (outname,"GE");
@@ -772,14 +774,14 @@ int nii_createFilename(struct TDICOMdata dcm, char * niiFilename, struct TDCMopt
                 sprintf(newstr, "%0.0f", dcm.dateTime);
                 strcat (outname,newstr);
             }
-			if (f == 'U') {
-				#ifdef mySegmentByAcq
-				sprintf(newstr, "%d", dcm.acquNum);
-				strcat (outname,newstr);
-				#else
-    			printf("Warning: ignoring '%%f' in output filename (recompile to segment by acquisition)\n");
-    			#endif
-			}
+	    if (f == 'U') {
+#ifdef mySegmentByAcq
+		    sprintf(newstr, "%d", dcm.acquNum);
+		    strcat (outname,newstr);
+#else
+		    printf("Warning: ignoring '%%f' in output filename (recompile to segment by acquisition)\n");
+#endif
+	    }
             if (f == 'Z')
                 strcat (outname,dcm.sequenceName);
             start = pos + 1;
@@ -828,12 +830,12 @@ int nii_createFilename(struct TDICOMdata dcm, char * niiFilename, struct TDCMopt
         i++;
     }
     if (i >= 26) {
-            #ifdef myUseCOut
-    		std::cout<<"Error: too many NIFTI images with the name "<<baseoutname<<std::endl;
-			#else
-        printf("Error: too many NIFTI images with the name %s\n", baseoutname);
-        #endif
-        return EXIT_FAILURE;
+#ifdef myUseCOut
+	    std::cout<<"Error: too many NIFTI images with the name "<<baseoutname<<std::endl;
+#else
+	    printf("Error: too many NIFTI images with the name %s\n", baseoutname);
+#endif
+	    return EXIT_FAILURE;
     }
     //printf("-->%s\n",pathoutname); return EXIT_SUCCESS;
     //printf("outname=%s\n", pathoutname);
